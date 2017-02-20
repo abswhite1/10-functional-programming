@@ -63,9 +63,11 @@
   // TODONE: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
   Article.numWordsAll = () => {
     return Article.all.map(function(el){
+      console.log(el.body.split(' ').length);
       return el.body.split(' ').length;})
     .reduce(function(all, cur){
-      return all + cur;}, 1)
+      console.log(all + cur);
+      return all + cur;})
   };
 
   // TODONE: Chain together a `map` and a `reduce` call to produce an array of unique author names.
@@ -73,11 +75,12 @@
     return Article.all.map(function(el){
       return el.author;
     })
-    .reduce(function(acc, curr){
-      if (!acc.include(cur)){
-        acc.push(cur);
+    .reduce((names, currAuthor) => {
+      if (!names.include(currAuthor)){
+        names.push(currAuthor);
+        console.log(currAuthor);
       }
-      return acc;
+      return names;
     }, []);
   };
 
@@ -86,14 +89,14 @@
       // TODONE: Transform each author string into an object with properties for
       // the author's name, as well as the total number of words across all articles
       // written by the specified author.
-    return {
-      name: author,
-      words: Article.all.filter(function(el){
-        return el.author === author;
-      }).map(function(el){
-        return el.body.split(' ').length
-      }).reduce(function(all, curr){
-        return all + curr;}, 1)
+      return {
+        name: author,
+        words: Article.all.filter(function(el){
+          return el.author === author;
+        }).map(function(el){
+          return el.body.split(' ').length
+        }).reduce(function(all, curr){
+          return all + curr;})
       };
     })
   };
