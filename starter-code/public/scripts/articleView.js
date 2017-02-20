@@ -121,6 +121,5 @@
     $('#blog-stats .articles').text(Article.all.length);
     $('#blog-stats .words').text(Article.numWordsAll());
   };
+  module.articleView = articleView;
 }) (window);
-
-// module.articleView = articleView;

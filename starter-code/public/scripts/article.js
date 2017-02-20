@@ -74,7 +74,7 @@
       return el.author;
     })
     .reduce(function(acc, curr){
-      if !(acc.include(cur)){
+      if (!acc.include(cur)){
         acc.push(cur);
       }
       return acc;
@@ -83,7 +83,7 @@
 
   Article.numWordsByAuthor = () => {
     return Article.allAuthors().map(author => {
-      // TODO: Transform each author string into an object with properties for
+      // TODONE: Transform each author string into an object with properties for
       // the author's name, as well as the total number of words across all articles
       // written by the specified author.
     return {
@@ -94,7 +94,7 @@
         return el.body.split(' ').length
       }).reduce(function(all, curr){
         return all + curr;}, 1)
-      })
+      };
     })
   };
 
@@ -138,6 +138,5 @@
       .then(console.log)
       .then(callback);
   };
+  module.Article = Article;
 }) (window);
-
-// module.articleView = articleView;
