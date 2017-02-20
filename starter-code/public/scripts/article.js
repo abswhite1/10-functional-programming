@@ -63,10 +63,8 @@
   // TODONE: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
   Article.numWordsAll = () => {
     return Article.all.map(function(el){
-      console.log(el.body.split(' ').length);
       return el.body.split(' ').length;})
     .reduce(function(all, cur){
-      console.log(all + cur);
       return all + cur;})
   };
 
@@ -76,10 +74,8 @@
       return el.author;
     })
     .reduce((names, currAuthor) => {
-      if (!names.include(currAuthor)){
-        names.push(currAuthor);
-        console.log(currAuthor);
-      }
+      if(names.indexOf(currAuthor) === -1) names.push(currAuthor);
+      // if (!names.include(currAuthor)) names.push(currAuthor);
       return names;
     }, []);
   };
