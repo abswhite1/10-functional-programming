@@ -25,10 +25,12 @@
   Article.loadAll = rows => {
     rows.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
 
-    // TODO: Refactor this forEach code, by using a `.map` call instead, since want we are trying to accomplish
+    // TODONE: Refactor this forEach code, by using a `.map` call instead, since want we are trying to accomplish
     // is the transformation of one colleciton into another.
-
-    /* OLD forEach():
+    Article.all = rows.map(function(el){
+      return new Article(el);
+    });
+      /* OLD forEach():
     rawData.forEach(function(ele) {
     Article.all.push(new Article(ele));
   });
@@ -58,14 +60,25 @@
     )
   };
 
-  // TODO: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
+  // TODONE: Chain together a `map` and a `reduce` call to get a rough count of all words in all articles.
   Article.numWordsAll = () => {
-    return Article.all.map().reduce()
+    return Article.all.map(function(el){
+      return el.body.split(' ');})
+    .reduce(function(all, cur){
+      return all + cur;}, 1)
   };
 
-  // TODO: Chain together a `map` and a `reduce` call to produce an array of unique author names.
+  // TODONE: Chain together a `map` and a `reduce` call to produce an array of unique author names.
   Article.allAuthors = () => {
-    return Article.all.map().reduce();
+    return Article.all.map(function(el){
+      return el.author;
+    })
+    .reduce(function(acc, curr){
+      if !(acc.include(cur)){
+        acc.push(cur);
+      }
+      return acc;
+    }, []);
   };
 
   Article.numWordsByAuthor = () => {
@@ -73,7 +86,10 @@
       // TODO: Transform each author string into an object with properties for
       // the author's name, as well as the total number of words across all articles
       // written by the specified author.
-
+      function Author(authorName, totalNumOfWords){
+        this.authorName = authorName;
+        this.totalNumOfWords = totalNumOfWords;
+      }
     })
   };
 
