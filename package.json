@@ -1,0 +1,23 @@
+{
+  "name": "10-functional-programming",
+  "version": "1.0.0",
+  "description": "![CF](https://i.imgur.com/7v5ASc8.png)  Lab 10: Functional Programming",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abswhite1/10-functional-programming.git"
+  },
+  "author": "Tedds and Abbs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abswhite1/10-functional-programming/issues"
+  },
+  "homepage": "https://github.com/abswhite1/10-functional-programming#readme"
+}
